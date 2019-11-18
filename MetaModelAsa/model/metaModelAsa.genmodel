@@ -9,19 +9,24 @@
   <foreignModel>metaModelAsa.ecore</foreignModel>
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="MetaModelAsa" disposableProviderFactory="true" ecorePackage="metaModelAsa.ecore#/">
-    <genClasses ecoreClass="metaModelAsa.ecore#//ArchitecturalElement"/>
+    <genClasses ecoreClass="metaModelAsa.ecore#//ArchitecturalElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metaModelAsa.ecore#//ArchitecturalElement/name"/>
+    </genClasses>
     <genClasses ecoreClass="metaModelAsa.ecore#//Component">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metaModelAsa.ecore#//Component/configuration"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metaModelAsa.ecore#//Component/fournis"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metaModelAsa.ecore#//Component/requis"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference metaModelAsa.ecore#//Component/interfaceComponent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metaModelAsa.ecore#//Component/providedService"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metaModelAsa.ecore#//Component/providedPort"/>
     </genClasses>
     <genClasses ecoreClass="metaModelAsa.ecore#//Configuration">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metaModelAsa.ecore#//Configuration/component"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metaModelAsa.ecore#//Configuration/connector"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metaModelAsa.ecore#//Configuration/port"/>
     </genClasses>
     <genClasses ecoreClass="metaModelAsa.ecore#//Connector">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metaModelAsa.ecore#//Connector/from"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metaModelAsa.ecore#//Connector/to"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metaModelAsa.ecore#//Connector/glue"/>
     </genClasses>
     <genClasses ecoreClass="metaModelAsa.ecore#//From">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metaModelAsa.ecore#//From/roles"/>
@@ -30,16 +35,26 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metaModelAsa.ecore#//To/roles"/>
     </genClasses>
     <genClasses ecoreClass="metaModelAsa.ecore#//Interface"/>
-    <genClasses ecoreClass="metaModelAsa.ecore#//Fournis">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metaModelAsa.ecore#//Fournis/port"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metaModelAsa.ecore#//Fournis/service"/>
-    </genClasses>
-    <genClasses ecoreClass="metaModelAsa.ecore#//Requis">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metaModelAsa.ecore#//Requis/port"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metaModelAsa.ecore#//Requis/service"/>
-    </genClasses>
     <genClasses ecoreClass="metaModelAsa.ecore#//Port"/>
     <genClasses ecoreClass="metaModelAsa.ecore#//Service"/>
     <genClasses ecoreClass="metaModelAsa.ecore#//Roles"/>
+    <genClasses ecoreClass="metaModelAsa.ecore#//ProvidedPort"/>
+    <genClasses ecoreClass="metaModelAsa.ecore#//RequiredPort"/>
+    <genClasses ecoreClass="metaModelAsa.ecore#//RequiredService"/>
+    <genClasses ecoreClass="metaModelAsa.ecore#//ProvidedService"/>
+    <genClasses ecoreClass="metaModelAsa.ecore#//InterfaceComponent"/>
+    <genClasses ecoreClass="metaModelAsa.ecore#//Link">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metaModelAsa.ecore#//Link/component"/>
+    </genClasses>
+    <genClasses ecoreClass="metaModelAsa.ecore#//BindingLink">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metaModelAsa.ecore#//BindingLink/port"/>
+    </genClasses>
+    <genClasses ecoreClass="metaModelAsa.ecore#//AttachmentLink">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metaModelAsa.ecore#//AttachmentLink/connector"/>
+    </genClasses>
+    <genClasses ecoreClass="metaModelAsa.ecore#//Glue"/>
+    <genClasses ecoreClass="metaModelAsa.ecore#//ClientServer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metaModelAsa.ecore#//ClientServer/architecturalelement"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>
