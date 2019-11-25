@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/ASA/src-gen" creationIcons="false" editDirectory="/ASA.edit/src-gen"
+    editorDirectory="/ASA.editor/src-gen" modelPluginID="ASA" modelName="ASA" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>aSA.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="ASA" disposableProviderFactory="true" ecorePackage="aSA.ecore#/">
+    <genClasses ecoreClass="aSA.ecore#//ArchitecturalElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute aSA.ecore#//ArchitecturalElement/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aSA.ecore#//ArchitecturalElement/interfaces"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aSA.ecore#//ArchitecturalElement/elements"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//ArchitecturalElement/parent"/>
+    </genClasses>
+    <genClasses ecoreClass="aSA.ecore#//Component">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Component/subConfiguration"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Component/bindings"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Component/attachment"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Component/componentInterfaces"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aSA.ecore#//Component/properties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aSA.ecore#//Component/constraints"/>
+    </genClasses>
+    <genClasses ecoreClass="aSA.ecore#//Configuration">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Configuration/components"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Configuration/connectors"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Configuration/configurationPorts"/>
+    </genClasses>
+    <genClasses ecoreClass="aSA.ecore#//Connector">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference aSA.ecore#//Connector/glue"/>
+    </genClasses>
+    <genClasses ecoreClass="aSA.ecore#//UserConnector">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//UserConnector/subConfiguration"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//UserConnector/attachment"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//UserConnector/connectorInterfaces"/>
+    </genClasses>
+    <genClasses ecoreClass="aSA.ecore#//BuiltInConnector">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//BuiltInConnector/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//BuiltInConnector/target"/>
+    </genClasses>
+    <genClasses ecoreClass="aSA.ecore#//Glue"/>
+    <genClasses ecoreClass="aSA.ecore#//Interface">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//Interface/parent"/>
+    </genClasses>
+    <genClasses ecoreClass="aSA.ecore#//Binding"/>
+    <genClasses ecoreClass="aSA.ecore#//Attachment"/>
+    <genClasses ecoreClass="aSA.ecore#//ComponentInterface">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference aSA.ecore#//ComponentInterface/bindings"/>
+    </genClasses>
+    <genClasses ecoreClass="aSA.ecore#//ConnectorInterface"/>
+    <genClasses ecoreClass="aSA.ecore#//Port"/>
+    <genClasses ecoreClass="aSA.ecore#//Service"/>
+    <genClasses ecoreClass="aSA.ecore#//RequiredPort"/>
+    <genClasses ecoreClass="aSA.ecore#//RequiredService"/>
+    <genClasses ecoreClass="aSA.ecore#//ProvidedPort"/>
+    <genClasses ecoreClass="aSA.ecore#//ProvidedService"/>
+    <genClasses ecoreClass="aSA.ecore#//ConnectorService"/>
+    <genClasses ecoreClass="aSA.ecore#//Role"/>
+    <genClasses ecoreClass="aSA.ecore#//ProvidedRole"/>
+    <genClasses ecoreClass="aSA.ecore#//RequiredRole"/>
+    <genClasses ecoreClass="aSA.ecore#//Property"/>
+    <genClasses ecoreClass="aSA.ecore#//Constraint"/>
+  </genPackages>
+</genmodel:GenModel>

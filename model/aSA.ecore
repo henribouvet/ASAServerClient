@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="aSA" nsURI="http://www.example.org/aSA" nsPrefix="aSA">
+  <eClassifiers xsi:type="ecore:EClass" name="ArchitecturalElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interfaces" upperBound="-1"
+        eType="#//Interface" containment="true" eOpposite="#//Interface/parent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//ArchitecturalElement" containment="true" eOpposite="#//ArchitecturalElement/parent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//ArchitecturalElement"
+        eOpposite="#//ArchitecturalElement/elements"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Component" eSuperTypes="#//ArchitecturalElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subConfiguration" eType="#//Configuration"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bindings" upperBound="-1"
+        eType="#//Binding"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attachment" eType="#//Attachment"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="componentInterfaces" lowerBound="2"
+        upperBound="-1" eType="#//ComponentInterface"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//Property" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
+        eType="#//Constraint" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Configuration" eSuperTypes="#//ArchitecturalElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="components" lowerBound="1"
+        upperBound="-1" eType="#//Component"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectors" upperBound="-1"
+        eType="#//Connector"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configurationPorts" lowerBound="1"
+        upperBound="-1" eType="#//Port"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Connector" abstract="true" eSuperTypes="#//ArchitecturalElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="glue" lowerBound="1" upperBound="-1"
+        eType="#//Glue" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UserConnector" eSuperTypes="#//Connector">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subConfiguration" eType="#//Configuration"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attachment" eType="#//Attachment"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectorInterfaces" lowerBound="2"
+        upperBound="-1" eType="#//ConnectorInterface"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BuiltInConnector" abstract="true" eSuperTypes="#//Connector">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//Interface"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Interface"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Glue"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Interface" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
+        eType="#//ArchitecturalElement" eOpposite="#//ArchitecturalElement/interfaces"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Binding" eSuperTypes="#//BuiltInConnector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Attachment" eSuperTypes="#//BuiltInConnector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ComponentInterface" abstract="true"
+      eSuperTypes="#//Interface">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bindings" upperBound="-1"
+        eType="#//Binding"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnectorInterface" abstract="true"
+      eSuperTypes="#//Interface"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Port" abstract="true" eSuperTypes="#//ComponentInterface"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Service" abstract="true" eSuperTypes="#//ComponentInterface"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RequiredPort" eSuperTypes="#//Port"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RequiredService" eSuperTypes="#//Service"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProvidedPort" eSuperTypes="#//Port"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProvidedService" eSuperTypes="#//Service"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnectorService" eSuperTypes="#//ConnectorInterface"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Role" abstract="true" eSuperTypes="#//ConnectorInterface"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProvidedRole" eSuperTypes="#//Role"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RequiredRole" eSuperTypes="#//Role"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Property"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Constraint"/>
+</ecore:EPackage>
