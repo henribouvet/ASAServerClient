@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<M2:Configuration
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:M2="http://www.example.org/aSA/M2"
+    xsi:schemaLocation="http://www.example.org/aSA/M2 aSA.ecore#//M2"
+    name="SimpleCS"
+    components="//@elements.0 //@elements.1 //@elements.1/@elements.0/@elements.0"
+    connectors="//@elements.2">
+  <elements
+      xsi:type="M2:Component"
+      name="Client"
+      attachment="//@elements.3"
+      componentInterfaces="//@elements.0/@interfaces.0">
+    <interfaces
+        xsi:type="M2:ProvidedPort"
+        name="Send_Request"/>
+  </elements>
+  <elements
+      xsi:type="M2:Component"
+      name="Server"
+      subConfiguration="//@elements.1/@elements.0"
+      attachment="//@elements.4"
+      componentInterfaces="//@elements.1/@interfaces.0">
+    <interfaces
+        xsi:type="M2:RequiredPort"
+        bindings="//@elements.1/@elements.1"
+        name="ReceiveRequest"/>
+    <elements
+        xsi:type="M2:Configuration"
+        name="Server_detail"
+        components="//@elements.1/@elements.0/@elements.0 //@elements.1/@elements.0/@elements.1 //@elements.1/@elements.0/@elements.2"
+        connectors="//@elements.1/@elements.0/@elements.3 //@elements.1/@elements.0/@elements.4 //@elements.1/@elements.0/@elements.5"
+        configurationPorts="//@elements.1/@elements.0/@interfaces.0">
+      <interfaces
+          xsi:type="M2:RequiredPort"
+          bindings="//@elements.1/@elements.1 //@elements.1/@elements.0/@elements.0/@elements.0"
+          name="ServerExternalSocket"/>
+      <elements
+          xsi:type="M2:Component"
+          name="ConnectionManager"
+          attachment="//@elements.1/@elements.0/@elements.6 //@elements.1/@elements.0/@elements.11"
+          componentInterfaces="//@elements.1/@elements.0/@elements.0/@interfaces.0 //@elements.1/@elements.0/@elements.0/@interfaces.1">
+        <interfaces
+            xsi:type="M2:ProvidedPort"
+            name="ConnectionManagertoSQLQuery"/>
+        <interfaces
+            xsi:type="M2:ProvidedPort"
+            name="ConnectionManagertoClearanceRequest"/>
+        <interfaces
+            xsi:type="M2:RequiredPort"
+            bindings="//@elements.1/@elements.0/@elements.0/@elements.0"
+            name="ExternalSocket"/>
+        <elements
+            xsi:type="M2:Binding"
+            name="CMToServer"
+            source="//@elements.1/@elements.0/@elements.0/@interfaces.2"
+            target="//@elements.1/@elements.0/@interfaces.0"/>
+      </elements>
+      <elements
+          xsi:type="M2:Component"
+          name="Database"
+          attachment="//@elements.1/@elements.0/@elements.9 //@elements.1/@elements.0/@elements.10"
+          componentInterfaces="//@elements.1/@elements.0/@elements.1/@interfaces.0 //@elements.1/@elements.0/@elements.1/@interfaces.1">
+        <interfaces
+            xsi:type="M2:RequiredPort"
+            name="DatabaseToSQLQuery"/>
+        <interfaces
+            xsi:type="M2:RequiredPort"
+            name="DatabaseToSecurityQuery"/>
+      </elements>
+      <elements
+          xsi:type="M2:Component"
+          name="SecurityManager"
+          attachment="//@elements.1/@elements.0/@elements.7 //@elements.1/@elements.0/@elements.8"
+          componentInterfaces="//@elements.1/@elements.0/@elements.2/@interfaces.0 //@elements.1/@elements.0/@elements.2/@interfaces.1">
+        <interfaces
+            xsi:type="M2:ProvidedPort"
+            name="SecurityManagerToSecurityQuery"/>
+        <interfaces
+            xsi:type="M2:RequiredPort"
+            name="SecurityManagertoClearanceRequest"/>
+      </elements>
+      <elements
+          xsi:type="M2:UserConnector"
+          name="SQLQuery"
+          attachment="//@elements.1/@elements.0/@elements.11 //@elements.1/@elements.0/@elements.10"
+          connectorInterfaces="//@elements.1/@elements.0/@elements.3/@interfaces.0 //@elements.1/@elements.0/@elements.3/@interfaces.1">
+        <interfaces
+            xsi:type="M2:RequiredRole"
+            name="SQLQuerytoConnectionManager"/>
+        <interfaces
+            xsi:type="M2:ProvidedRole"
+            name="SQLQuerytoDataBase"/>
+        <glue
+            name="SQLQueryGlue"/>
+      </elements>
+      <elements
+          xsi:type="M2:UserConnector"
+          name="SecurityQuery"
+          attachment="//@elements.1/@elements.0/@elements.8 //@elements.1/@elements.0/@elements.9"
+          connectorInterfaces="//@elements.1/@elements.0/@elements.4/@interfaces.0 //@elements.1/@elements.0/@elements.4/@interfaces.1">
+        <interfaces
+            xsi:type="M2:ProvidedRole"
+            name="SecurityQuerytoDatabase"/>
+        <interfaces
+            xsi:type="M2:RequiredRole"
+            name="SecurityQuerytoSecurityManager"/>
+        <glue
+            name="SecurityQueryGlue"/>
+      </elements>
+      <elements
+          xsi:type="M2:UserConnector"
+          name="ClearanceRequest"
+          attachment="//@elements.1/@elements.0/@elements.6 //@elements.1/@elements.0/@elements.7"
+          connectorInterfaces="//@elements.1/@elements.0/@elements.5/@interfaces.0 //@elements.1/@elements.0/@elements.5/@interfaces.1">
+        <interfaces
+            xsi:type="M2:ProvidedRole"
+            name="ClearanceRequestToSecurityManager"/>
+        <interfaces
+            xsi:type="M2:RequiredRole"
+            name="ClearanceRequestToConnectionManager"/>
+        <glue
+            name="ClearanceRequestGlue"/>
+      </elements>
+      <elements
+          xsi:type="M2:Attachment"
+          name="ClearanceRequestConnectionManager"
+          source="//@elements.1/@elements.0/@elements.5/@interfaces.1"
+          target="//@elements.1/@elements.0/@elements.0/@interfaces.1"/>
+      <elements
+          xsi:type="M2:Attachment"
+          name="ClearanceRequestSecurityManager"
+          source="//@elements.1/@elements.0/@elements.5/@interfaces.0"
+          target="//@elements.1/@elements.0/@elements.2/@interfaces.1"/>
+      <elements
+          xsi:type="M2:Attachment"
+          name="SecurityManagerSecurityQuery"
+          source="//@elements.1/@elements.0/@elements.2/@interfaces.0"
+          target="//@elements.1/@elements.0/@elements.4/@interfaces.1"/>
+      <elements
+          xsi:type="M2:Attachment"
+          name="SecurityQueryToDatabase"
+          source="//@elements.1/@elements.0/@elements.4/@interfaces.0"
+          target="//@elements.1/@elements.0/@elements.1/@interfaces.1"/>
+      <elements
+          xsi:type="M2:Attachment"
+          name="DatabaseSQLQuery"
+          source="//@elements.1/@elements.0/@elements.1/@interfaces.0"
+          target="//@elements.1/@elements.0/@elements.3/@interfaces.1"/>
+      <elements
+          xsi:type="M2:Attachment"
+          name="SQLQueryConnectionManager"
+          source="//@elements.1/@elements.0/@elements.3/@interfaces.0"
+          target="//@elements.1/@elements.0/@elements.0/@interfaces.0"/>
+    </elements>
+    <elements
+        xsi:type="M2:Binding"
+        name="ServerToServerDetail"
+        source="//@elements.1/@interfaces.0"
+        target="//@elements.1/@elements.0/@interfaces.0"/>
+  </elements>
+  <elements
+      xsi:type="M2:UserConnector"
+      name="RPC"
+      attachment="//@elements.3 //@elements.4"
+      connectorInterfaces="//@elements.2/@interfaces.0">
+    <interfaces
+        xsi:type="M2:RequiredRole"
+        name="Caller"/>
+    <interfaces
+        xsi:type="M2:ProvidedRole"
+        name="Called"/>
+    <glue name="CallerToCalled"/>
+  </elements>
+  <elements
+      xsi:type="M2:Attachment"
+      name="ClientToRpc"
+      source="//@elements.0/@interfaces.0"
+      target="//@elements.2/@interfaces.0"/>
+  <elements
+      xsi:type="M2:Attachment"
+      name="ServerToRpc"
+      source="//@elements.2/@interfaces.1"
+      target="//@elements.1/@interfaces.0"/>
+</M2:Configuration>
